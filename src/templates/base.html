@@ -18,8 +18,15 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body dir="rtl" class="hold-transition sidebar-mini">
+{% include 'parts/nav.html' %}
+{% include 'parts/sidebar.html' %}
 
 
+{% block content %}
+
+{% endblock %}
+
+{% include 'parts/footer.html' %}
 <!-- REQUIRED SCRIPTS -->
 <script src="plugins/jquery_datepacker/jquery_ui.js"></script>
 
