@@ -48,7 +48,7 @@ class Book(models.Model):
     description = models.TextField()
     number_of_pages = models.IntegerField(validators=[MinValueValidator(1)])    
     language = models.CharField(max_length=2, choices=Language.choices, default=Language.ENGLISH)
-    cover_image = models.ImageField(upload_to='covers/', blank=True, null=True)
+    cover_image = models.ImageField(upload_to='covers/%Y/%m/%d/', blank=True, null=True)
 
     price = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
     retail_price_day = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
