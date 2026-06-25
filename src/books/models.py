@@ -58,7 +58,7 @@ class Book(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     active = models.BooleanField(default=True)
-    status = models.CharField(max_length=2, choices=Status.choices, default=Status.AVAILABLE, blank=True, null=True)
+    status = models.CharField(max_length=2, choices=Status.choices, default=Status.AVAILABLE)
 
     class Meta:
         constraints = [

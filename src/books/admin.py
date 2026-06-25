@@ -7,7 +7,7 @@ class BookAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('language', 'published_date','author', 'category')
     search_fields = ('title', 'description', 'language', 'author__name', 'category__name')
-    raw_id_fields = ('author',)
+    #raw_id_fields = ('author',)
     date_hierarchy = 'published_date'
     list_select_related = ('author', 'category')
 
