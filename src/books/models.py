@@ -3,6 +3,7 @@ from django.core.validators import MinValueValidator
 
 class Author(models.Model):
     name = models.CharField(max_length=100)
+    author_image = models.ImageField(upload_to='authors/%Y/%m/%d/', blank=True, null=True)
     bio = models.TextField(blank=True)
 
     class Meta:

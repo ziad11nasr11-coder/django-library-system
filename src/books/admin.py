@@ -10,13 +10,16 @@ class BookAdmin(admin.ModelAdmin):
     #raw_id_fields = ('author',)
     date_hierarchy = 'published_date'
     list_select_related = ('author', 'category')
+    show_facets = admin.ShowFacets.ALWAYS
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
-    
+    show_facets = admin.ShowFacets.ALWAYS
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
+    show_facets = admin.ShowFacets.ALWAYS

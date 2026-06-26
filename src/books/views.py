@@ -1,7 +1,13 @@
 from django.shortcuts import render
 
+from books.models import Book, Category
+
 def book_list(request):
-    return render(request, 'books/books_list.html')
+    context = {
+        'books': Book.objects.all(),
+        'categories': Category.objects.all()
+    }
+    return render(request, 'books/books_list.html', context)
 
 def update_book(request, slug):
     return render(request, 'books/update_book.html', {'slug': slug})
