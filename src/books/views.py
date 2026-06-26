@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from books.forms import CategoryForm
+from django.shortcuts import redirect, render
+from books.forms import BookForm, CategoryForm
 from books.models import Book, Category
 
 def book_list(request):
@@ -15,7 +15,20 @@ def book_list(request):
     return render(request, 'books/books_list.html', context)
 
 def update_book(request, slug):
-    return render(request, 'books/update_book.html', {'slug': slug})
+    book = Book.objects.get(slug=slug)
+
+    if request.method == 'POST':
+        book_save = BookForm(request.POST, request.FILES, instance=book)
+        if book_save.is_valid():
+            book_save.save()
+            return redirect('/')
+    else:
+        book_save = BookForm(instance=book)
+    context = {
+        'form': book_save,
+        'slug': slug
+    }
+    return render(request, 'books/update_book.html', context)
 
 def delete_book(request, slug):
     return render(request, 'books/delete_book.html', {'slug': slug})
