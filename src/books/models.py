@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
-
+from django.utils.text import slugify
 class Author(models.Model):
     name = models.CharField(max_length=100)
     author_image = models.ImageField(upload_to='authors/%Y/%m/%d/', blank=True, null=True)
@@ -56,10 +56,15 @@ class Book(models.Model):
     retail_period = models.IntegerField(validators=[MinValueValidator(1)], blank=True, null=True)  
 
     published_date = models.DateField() # Book publication date
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True) 
 
     active = models.BooleanField(default=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.AVAILABLE)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     class Meta:
         constraints = [

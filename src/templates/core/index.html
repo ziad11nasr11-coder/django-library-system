@@ -89,13 +89,9 @@
           <!-- /.card-header -->
           <!-- form start -->
           <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="card-body">
-              <input type="text" class="form-control" />
-              <input type="text" class="form-control" />
-              <input type="text" class="form-control" />
-              <input type="text" class="form-control" />
-              <input type="text" class="form-control" />
-              <small id="totalrente" class="form-text text-muted"></small>
+            {{form}}
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
