@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from books.forms import BookForm, CategoryForm
 from books.models import Book, Category
 
@@ -31,4 +31,9 @@ def update_book(request, slug):
     return render(request, 'books/update_book.html', context)
 
 def delete_book(request, slug):
+    book = get_object_or_404(Book, slug=slug)
+    if request.method == 'POST':
+        book.delete()
+        return redirect('/')
+    
     return render(request, 'books/delete_book.html', {'slug': slug})
