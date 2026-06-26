@@ -1,5 +1,6 @@
-<aside style="position: fixed;" class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
+<aside
+    style="position: fixed; height: 100vh; overflow-y: auto;"
+    class="main-sidebar sidebar-dark-primary elevation-4">    <!-- Brand Logo -->
     <a href="#" class="brand-link">
     <span class="brand-text font-weight-light">NOUVIL</span>
     </a>
@@ -45,11 +46,13 @@
                     </a>
                 </li> 
             <form id="cat" method="POST">
-            
-                <input type="text" class="form-control">
+                <div id="catinput">
+                {% csrf_token %}
+                {{ category_form }}
 
                 <button type="submit" class="btn btn-success">save</button>
                 <button id="backcat" class="btn btn-primary ">back</button>
+                </div>
             </form>
 
                 {% for category in categories %}

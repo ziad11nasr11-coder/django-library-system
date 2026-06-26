@@ -29,10 +29,11 @@
 
 {% include 'parts/footer.html' %}
 <!-- REQUIRED SCRIPTS -->
+
 <script src="{% static 'plugins/jquery_datepacker/jquery_ui.js' %}"></script>
 
 <!-- jQuery -->
-<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></scrip>
 <!-- Bootstrap -->
 <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <!-- AdminLTE -->
@@ -42,8 +43,17 @@
 <script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
 
 <script src="{% static 'dist/js/demo.js' %}"></script>
-<!--<script src="dist/js/pages/dashboard3.js"></script>
--->
+<!-- <script src="dist/js/pages/dashboard3.js"></script> -->
+
+<script>
+$("#catinput").hide();
+$("#addcat").click(function(){
+    $("#catinput").show();
+});
+$("#backcat").click(function(){
+    $("#catinput").hide();
+});
+</script>
 <script>
 $(document).ready(function(){
     $('#myModal').on('shown.bs.modal', function () {
